@@ -1,7 +1,7 @@
 import express, {
 	type Application,
 	type Request,
-	type Response,
+	type Response
 } from "express";
 import "dotenv/config";
 import cors from "cors";
@@ -16,5 +16,10 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req: Request, res: Response) => {
 	return res.send("It's working 🙌");
 });
+
+// * Routes
+import authRoutes from "./routes/index.js";
+
+app.use("/api/v1", authRoutes);
 
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
